@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\API",
+    "\\API\\Controllers",
+    "\\API\\Models",
+    "\\WpfApp_front",
+    "\\WpfApp_front\\Model",
+    "\\WpfApp_front\\View"
+  ],
+  "SelectedNode": "\\WpfApp_front\\Model\\Film.cs",
+  "PreviewInSolutionExplorer": false
+}

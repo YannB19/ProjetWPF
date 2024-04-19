@@ -1,0 +1,65 @@
+﻿<Window x:Class="WpfApp_front.View.ListeFilm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_front.View"
+        mc:Ignorable="d"
+         Title="MainWindow" Height="600" Width="900" Background="Gray">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="Red" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Label Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Message"/>
+            <Label Content="Id" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Id" Visibility="Hidden"/>
+            <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Saisir un Id" VerticalAlignment="Center" Width="120" Name="txtId" Visibility="Hidden"/>
+
+            <Label Content="Nom du film" HorizontalAlignment="Left" VerticalAlignment="Center" Name="NomFilm" Foreground="white"/>
+
+            <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Saisir un film" VerticalAlignment="Center" Width="120" Name="txtNom"/>
+            <Label Content="Description du film" HorizontalAlignment="Left" VerticalAlignment="Center" Name="DescriptionFilm" Foreground="white"/>
+            <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Saisir une description" VerticalAlignment="Center" Width="120" Name="txtDesc"/>
+            <Button Content="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click_1" RenderTransformOrigin="-4.496,2.238" />
+            <Button Content="Mettre a jour" HorizontalAlignment="Left" VerticalAlignment="Center" Name="update" Click="update_Click" />
+            <Button Content="Charger la liste" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_2"  />
+            <DataGrid ItemsSource="{Binding}"
+                      Name="FilmList" 
+                      xmlns:m="http://schemas.microsoft/wpf/2008/toolkit"
+                        AutoGenerateColumns="False" Grid.Row="1" Grid.RowSpan="2" Width="821"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Path=filmId}"/>
+                    <DataGridTextColumn Header="Nom du film" Binding="{Binding Path=nom}"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Path=description}"/>
+                    <DataGridTemplateColumn Header="Modifier">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="BtnUpdateFilm">Modifier</Button>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Supprimer">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="BtnDeleteFilm">Supprimer</Button>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <Button Content="Suivant" HorizontalAlignment="Left" Margin="746,316,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.919,-3.069" Height="34" Width="114" Click="Button_Click"/>
+
+
+
+
+    </Grid>
+</Window>
