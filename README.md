@@ -1,2 +1,3 @@
 # WPF MVVM Example
-Example of MVVM pattern usage in WPF and C#
+WPF app en C# sur les films et leurs héros.
+ 

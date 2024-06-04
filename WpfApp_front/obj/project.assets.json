@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ybarr\\source\\repos\\EvalWPF\\WpfApp_front\\WpfApp_front.csproj",
+      "projectUniqueName": "C:\\Users\\ybarr\\source\\repos\\ProjetWPF\\WpfApp_front\\WpfApp_front.csproj",
       "projectName": "WpfApp_front",
-      "projectPath": "C:\\Users\\ybarr\\source\\repos\\EvalWPF\\WpfApp_front\\WpfApp_front.csproj",
+      "projectPath": "C:\\Users\\ybarr\\source\\repos\\ProjetWPF\\WpfApp_front\\WpfApp_front.csproj",
       "packagesPath": "C:\\Users\\ybarr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ybarr\\source\\repos\\EvalWPF\\WpfApp_front\\obj\\",
+      "outputPath": "C:\\Users\\ybarr\\source\\repos\\ProjetWPF\\WpfApp_front\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ybarr\\AppData\\Roaming\\NuGet\\NuGet.Config",

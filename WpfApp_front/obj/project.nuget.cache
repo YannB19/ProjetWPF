@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z+KxKQzNr9HOwIqk8KQpWvFDtIuaLLSaKa9Xwv7TtYv84ZrRzr/wvBsFBgMVfXUQ14oL7rD2cNpM8+S1PZHGDQ==",
+  "dgSpecHash": "DL99buJ9YtL0XriCIvBwIWPSsl4s+c/C3AP8HQviodd/jJlUbq7kWwn55jhW4OkuHplgCjyE+ngfnRN83H15hA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ybarr\\source\\repos\\EvalWPF\\WpfApp_front\\WpfApp_front.csproj",
+  "projectFilePath": "C:\\Users\\ybarr\\source\\repos\\ProjetWPF\\WpfApp_front\\WpfApp_front.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ybarr\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\ybarr\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",

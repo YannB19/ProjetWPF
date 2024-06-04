@@ -1,0 +1,134 @@
+﻿<Window x:Class="WpfApp_front.View.ListeHero"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_front.View"
+        mc:Ignorable="d"
+        Title="ListeHero" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#444444"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#444444"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#666666"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#666666"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="Red" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Retour" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Height="41" Width="145" Click="Button_Return" Foreground="Black" FontSize="20">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="red"/>
+                    <GradientStop Color="red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+			<Label Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Name="Message"/>
+            <Label Content="Id du hero" HorizontalAlignment="Left" VerticalAlignment="Center" Name="IdHero" Foreground="white" Visibility="Hidden"/>
+            <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Saisir un id" VerticalAlignment="Center" Width="120" Name="txtId" Visibility="Hidden"/>
+
+            <Label Content="Nom du hero" HorizontalAlignment="Left" VerticalAlignment="Center" Name="NomHero" Foreground="white"/>
+
+			<TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Saisir un hero" VerticalAlignment="Center" Width="120" Name="txtNom"/>
+			<Label Content="Description du hero" HorizontalAlignment="Left" VerticalAlignment="Center" Name="DescriptionHero" Foreground="white"/>
+			<TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Saisir une description" VerticalAlignment="Center" Width="120" Name="txtDesc"/>
+            <Button Style="{DynamicResource RoundedButtonStyle}" Content="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="20" Click="Button_Click_1" RenderTransformOrigin="-4.496,2.238" 
+                    Background="Black"
+                    Foreground="White"
+                    FontFamily="Arial"/>
+            <Button Style="{DynamicResource RoundedButtonStyle}" Content="Mettre a jour" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Height="20" Name="update" Click="update_Click" 
+                    Background="Black"
+                    Foreground="White"
+                    FontFamily="Arial"/>
+            <Button Style="{DynamicResource RoundedButtonStyle}" Content="Charger la liste" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="20" Click="Button_Click_2"  
+                    Background="Black"
+                    Foreground="White"
+                    FontFamily="Arial"/>
+            <DataGrid ItemsSource="{Binding}"
+                      Name="HeroList"
+                      xmlns:m="http://schemas.microsoft/wpf/2008/toolkit"
+                        AutoGenerateColumns="False" Grid.Row="1" Grid.RowSpan="2" Width="821"
+                      >
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Id" Binding="{Binding Path=id}"/>
+					<DataGridTextColumn Header="Nom du hero" Binding="{Binding Path=nom}"/>
+					<DataGridTextColumn Header="Description" Binding="{Binding Path=description}"/>
+					<DataGridTemplateColumn Header="Modifier">
+						<DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{DynamicResource RoundedButtonStyle}" Width="100" Height="20" Click="BtnUpdateHero" Background="Black" Foreground="White" FontFamily="Arial">Modifier</Button>
+							</DataTemplate>
+
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTemplateColumn Header="Supprimer">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<Button Style="{DynamicResource RoundedButtonStyle}" Width="100" Height="20" Click="BtnDeleteHero" Background="Black" Foreground="White" FontFamily="Arial">Supprimer</Button>
+							</DataTemplate>
+
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+				</DataGrid.Columns>
+			</DataGrid>
+		</StackPanel>
+
+    </Grid>
+</Window>

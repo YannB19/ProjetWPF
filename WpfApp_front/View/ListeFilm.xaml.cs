@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp_front.Model;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 
 namespace WpfApp_front.View
@@ -35,7 +36,7 @@ namespace WpfApp_front.View
 
 
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void BtnAjouterFilm(object sender, RoutedEventArgs e)
         {
             if(String.IsNullOrEmpty(txtNom.Text) || String.IsNullOrEmpty(txtDesc.Text))
             {
@@ -53,7 +54,7 @@ namespace WpfApp_front.View
 
                 try
                 {
-                    HttpResponseMessage response = await client.PostAsJsonAsync("https://localhost:7020/api/Film/", Film);
+                    HttpResponseMessage response = await client.PostAsJsonAsync("https://localhost:7246/api/Film/InsertFilm", Film);
                     
                     response.EnsureSuccessStatusCode();
 
@@ -62,12 +63,12 @@ namespace WpfApp_front.View
                 {
                     message = ex.Message;
                 }
-
-                MessageBox.Show(this, "Le film " + message.Split(",")[1].Split(":")[1].Replace('"', ' ') + " à bien été ajouté" , "Message", MessageBoxButton.OK);
+                this.GetFilms();
+                MessageBox.Show(this, "Le film " + Film.nom + " à bien été ajouté", "Message", MessageBoxButton.OK);
             }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void BtnChargerListe(object sender, RoutedEventArgs e)
         {
            
             this.GetFilms();
@@ -75,7 +76,7 @@ namespace WpfApp_front.View
 
         private async void GetFilms()
         {
-            var response = await client.GetStringAsync("https://localhost:7020/api/Film/GetAll");
+            var response = await client.GetStringAsync("https://localhost:7246/api/Film/GetFilms");
             var films = JsonConvert.DeserializeObject<List<Film>>(response);
             FilmList.DataContext = films;
 
@@ -85,38 +86,40 @@ namespace WpfApp_front.View
         {
             var Film = new Film()
             {
-                filmId = Convert.ToInt32(txtId.Text),
+                id = Int32.Parse(txtId.Text),
                 nom = txtNom.Text,
                 description = txtDesc.Text,
             };
             string message = string.Empty;
             this.UpdateFilm(Film);
+            this.GetFilms();
         }
 
         private async void UpdateFilm(Film film)
         {
-            await client.PutAsJsonAsync("https://localhost:7020/api/Film/" + film.filmId, film);
+            await client.PutAsJsonAsync("https://localhost:7246/api/Film/UpdateFilm", film);
         }
 
         private async void DeleteFilm(int filmId)
         {
-            await client.DeleteAsync("https://localhost:7020/api/Film/" + filmId);
+            await client.DeleteAsync("https://localhost:7246/api/Film/DeleteFilm/" + filmId);
         }
 
 
         private void BtnUpdateFilm(object sender, RoutedEventArgs e)
         {
             Film film = ((FrameworkElement)sender).DataContext as Film;
-            txtId.Text = film.filmId.ToString();
+            txtId.Text = film.id.ToString();
             txtNom.Text = film.nom;
             txtDesc.Text = film.description;  
             this.UpdateFilm(film);
+            this.GetFilms();
         }
 
         private void BtnDeleteFilm(object sender, RoutedEventArgs e)
         {
             Film film = ((FrameworkElement)sender).DataContext as Film;
-            this.DeleteFilm(film.filmId);
+            this.DeleteFilm(film.id);
             MessageBox.Show(this, "Supprimé", "Message", MessageBoxButton.OK);
             this.GetFilms();
 
@@ -124,7 +127,7 @@ namespace WpfApp_front.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Window2 w2 = new Window2();
+            ListeHero w2 = new ListeHero();
             w2.Show();
             this.Hide();
         }

@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\ybarr\source\repos\EvalWPF\WpfApp_front\obj\Release\net7.0-windows\
+C:\Users\ybarr\source\repos\ProjetWPF\WpfApp_front\obj\Release\net7.0-windows\
 WpfApp_front
 none
 false
 TRACE;RELEASE;NET;NET7_0;NETCOREAPP
-C:\Users\ybarr\source\repos\EvalWPF\WpfApp_front\App.xaml
+C:\Users\ybarr\source\repos\ProjetWPF\WpfApp_front\App.xaml
 2-1383728507
 
-5-434046362
+6-21797243
 199-1232548818
 View\ListeFilm.xaml;View\Window2.xaml;
 

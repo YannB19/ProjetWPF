@@ -7,12 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\Window2.xaml.cs">
+    <Compile Update="View\ListeHero.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\Window2.xaml">
+    <Page Update="View\ListeHero.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
